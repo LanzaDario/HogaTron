@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="CasaMatik.MainPage2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CasaMatik"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <NavigationView x:Name="NavView"
+                    ItemInvoked="NavView_ItemInvoked"
+                    SelectionChanged="NavView_SelectionChanged"
+                    Loaded="NavView_Loaded"
+                    Canvas.ZIndex="0"
+                    OpenPaneLength="200"
+                    CompactModeThresholdWidth="400">
+
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="EstadoNavItem" Content="Estado" Tag="estado">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE9D9;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItemHeader Content="Main pages"/>
+            <NavigationViewItem x:Uid="AlarmaNavItem" Icon="Lock" Content="Alarma" Tag="alarma"/>
+            <NavigationViewItem x:Uid="RiegoNavItem" Icon="Street" Content="Riego" Tag="riego"/>
+            <NavigationViewItem x:Uid="TemperaturaNavItem" Icon="Frigid" Content="Temperatura" Tag="temperatura"/>
+            <NavigationViewItem x:Uid="IluminacionNavItem" Icon="ToolTip" Content="Iluminación" Tag="iluminacion"/>
+            <NavigationViewItem x:Uid="TemporizadorNavItem" Icon="Stopwatch" Content="Temporizador" Tag="temporizador"/>
+        </NavigationView.MenuItems>
+
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox x:Name="ASB" QueryIcon="Find"/>
+        </NavigationView.AutoSuggestBox>
+
+        <NavigationView.HeaderTemplate>
+            <DataTemplate>
+                <Grid Margin="24,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                           FontSize="28"
+                           VerticalAlignment="Center"
+                           Text="HogaTron"/>
+                    <CommandBar Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DefaultLabelPosition="Right"
+                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                        <AppBarButton Label="Refresh" Icon="Actualizar"/>
+                        <AppBarButton Label="Import" Icon="Conexión"/>
+                    </CommandBar>
+                </Grid>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
+
+        <NavigationView.PaneFooter>
+            <HyperlinkButton x:Name="SitioWebBtn"
+                             Content="Sitio Web"
+                             Click="Web_Click"
+                             Margin="12,0"/>
+        </NavigationView.PaneFooter>
+
+        <Frame x:Name="ContentFrame" Margin="24">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+
+    </NavigationView>
+</Page>

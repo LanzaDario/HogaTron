@@ -1,0 +1,79 @@
+{controladores}
+IDcont, Descripcion, IPdir, Puerto
+1, Raspberry PI, 192.168.2.137, 8080
+2, Arduino alarma, 192.168.2.62, 6062
+3, Arduino riego, 192.168.2.63, 6063
+
+{entradassalidas}
+Tag, IDcont, TipoIO, PinNum, Descripcion, Servicio
+L-401, 3, Output, 2, Lampara iluminacion, Decorativas patio
+P-401, 3, Output, 3, Bomba centrifuga, Bomba riego
+XV-402, 3, Output, 4, Valvula todo-nada, Vereda
+XV-403, 3, Output, 5, Valvula todo-nada, Jardin trasero
+XV-405, 3, Output, 6, Valvula todo-nada, Huerta
+XV-407, 3, Output, 7, Valvula todo-nada, Entrada piscina
+XV-408, 3, Output, 8, Valvula todo-nada, Salida piscina
+XV-409, 3, Output, 9, Valvula todo-nada, Salida cisterna
+LT-401, 3, Input, 10, Transmisor de nivel ultrasonico, Tanque cisterna
+ZS-101, 1, Input, 1, Detector infrarrojo, Living
+ZS-102, 1, Input, 2, Detector infrarrojo, Comedor
+ZS-103, 1, Input, 3, Detector infrarrojo, Habitacion
+ZS-301, 1, Input, 4, Detector infrarrojo, Garage
+
+{tareacontrol}
+IDtarea, Categoria, Descripcion
+1, Riego, Jardin trasero
+2, Riego, Vereda
+3, Piscina, Recircular agua
+4, Seguridad, Activar alarma
+
+{accioncontrol}
+IDtarea, Tag, EstadoIO
+1, P-401, On
+1, XV-402, Off
+1, XV-403, On
+1, XV-405, Off
+1, XV-407, Off
+1, XV-408, Off
+1, XV-409, On
+2, P-401, On
+2, XV-402, On
+2, XV-403, Off
+2, XV-405, Off
+2, XV-407, Off
+2, XV-408, Off
+2, XV-409, On
+3, P-401, On
+3, XV-402, Off
+3, XV-403, Off
+3, XV-405, Off
+3, XV-407, On
+3, XV-408, On
+3, XV-409, Off
+4, ZS-101, Enabled
+4, ZS-102, Enabled
+4, ZS-103, Enabled
+4, ZS-301, Disabled
+
+{calendario}
+IDtarea, DiaPrograma, Hora, Tiempo
+1, DiaSemana.Lunes, 09:00, 180
+1, DiaSemana.Lunes, 15:00, 180
+1, DiaSemana.Martes, 09:00, 180
+1, DiaSemana.Martes, 15:00, 180
+1, DiaSemana.Miercoles, 09:00, 180
+1, DiaSemana.Miercoles, 15:00, 180
+1, DiaSemana.Jueves, 09:00, 180
+1, DiaSemana.Jueves, 15:00, 180
+1, DiaSemana.Viernes, 09:00, 180
+1, DiaSemana.Viernes, 15:00, 180
+1, DiaSemana.Sabado, 11:00, 180
+1, DiaSemana.Sabado, 17:00, 180
+1, DiaSemana.Domingo, 11:00, 180
+1, DiaSemana.Domingo, 17:00, 180
+
+{causacondicional}
+IDaccion, Tag, EstadoIO
+
+{efectocondicional}
+IDaccion, Tag, EstadoIO
